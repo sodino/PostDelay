@@ -29,7 +29,7 @@ logcat -v threadtime > /sdcard/test.log &
 
 > `logcat -v threadtime`记录日志的线程及时间信息。
 > `logcat`不使用`-s`过滤无关日志，因为还需要系统的锁屏与解屏日志来提供时间点。
-
+> 日志源文件见链接[test.log](https://github.com/sodino/PostDelay/blob/master/test.log)
 ---------------------------------------------------
 ## 待解决的疑问
 
