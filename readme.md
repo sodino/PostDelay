@@ -24,7 +24,7 @@
 logcat -v threadtime > /sdcard/test.log &
 ```
 3. 拨掉数据线并锁屏
-4. 等待几分钟后，插上数据线，提取`/sdcard/test.log`文件观察日志打印情况。
+4. 等待几分钟后，先点亮屏蔽并解锁屏幕，再插上数据线，提取`/sdcard/test.log`文件观察日志打印情况。
 
 
 > `logcat -v threadtime`记录日志的线程及时间信息。
