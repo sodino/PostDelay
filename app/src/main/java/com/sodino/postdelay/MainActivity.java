@@ -52,14 +52,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean handleMessage(Message msg) {
+        int count = 0;
+        int diff = uiCount - bgCount;
         switch(msg.what) {
             case DO_UI_TASK:{
-                Log.d("BgTest", "uiMessage " + uiCount ++);
+                count = uiCount;
+                Log.d("BgTest", "uiCount " + count
+                        + (diff > 0 ? ("  +" + diff) : "")
+                );
                 uiHandler.sendEmptyMessageDelayed(DO_UI_TASK, DURATION);
+
+                uiCount ++;
             }break;
             case DO_BG_TASK:{
-                Log.d("BgTest", "bgMessage " + bgCount++);
+                count = bgCount;
+                Log.d("BgTest", "bgCount " + count
+                        + (diff < 0 ? ("  +" + Math.abs(diff)) : "")
+                );
                 backHandler.sendEmptyMessageDelayed(DO_BG_TASK, DURATION);
+
+                bgCount ++;
             }break;
         }
         return false;
