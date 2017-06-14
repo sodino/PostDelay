@@ -4,7 +4,7 @@
 
 `Android`手机为了省电，在锁屏后会尽可能`CPU`休眠，下面进行观测休眠对线程的影响 。
 
-## 线程任务 ##
+## 线程任务
 
 见代码[MainActivity.java](https://github.com/sodino/PostDelay/blob/master/app/src/main/java/com/sodino/postdelay/MainActivity.java)
 
@@ -29,7 +29,7 @@ logcat -v threadtime > /sdcard/test.log &
 
 > `logcat -v threadtime`记录日志的线程及时间信息。
 > `logcat`不使用`-s`过滤无关日志，因为还需要系统的锁屏与解屏日志来提供时间点。
-> 日志源文件见链接[test.log](https://github.com/sodino/PostDelay/blob/master/test.log)
+> 日志源文件见链接[test.log](https://raw.githubusercontent.com/sodino/PostDelay/master/test.log)
 ---------------------------------------------------
 ## 待解决的疑问
 
