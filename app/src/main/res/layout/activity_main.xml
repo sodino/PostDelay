@@ -18,14 +18,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/btnStart"></Button>
+        android:text="Start Count"
+        android:textAllCaps="false"
+        android:id="@+id/btnStartHandlerCount"></Button>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Stop"
+        android:text="Stop Count"
         android:visibility="invisible"
-        android:id="@+id/btnStop"></Button>
+        android:textAllCaps="false"
+        android:id="@+id/btnStopHandlerCount"></Button>
+
+
 
 </android.support.constraint.ConstraintLayout>

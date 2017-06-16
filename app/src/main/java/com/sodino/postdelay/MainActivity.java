@@ -1,5 +1,6 @@
 package com.sodino.postdelay;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -26,14 +27,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btnStart).setOnClickListener(this);
-        findViewById(R.id.btnStop).setOnClickListener(this);
+        findViewById(R.id.btnStartHandlerCount).setOnClickListener(this);
+        findViewById(R.id.btnStopHandlerCount).setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.btnStart:{
+            case R.id.btnStartHandlerCount:{
                 if (backHandler == null) {
                     bThread.start();
                     backHandler = new Handler(bThread.getLooper(), this);
@@ -41,11 +42,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 backHandler.sendEmptyMessageDelayed(DO_BG_TASK, DURATION);
                 uiHandler.sendEmptyMessageDelayed(DO_UI_TASK, DURATION);
                 v.setVisibility(View.GONE);
-                findViewById(R.id.btnStop).setVisibility(View.VISIBLE);
+                findViewById(R.id.btnStopHandlerCount).setVisibility(View.VISIBLE);
+
+                Intent intent = new Intent(this, TestAlarmService.class);
+                startService(intent);
             }break;
-            case R.id.btnStop : {
+            case R.id.btnStopHandlerCount: {
                 v.setVisibility(View.GONE);
-                findViewById(R.id.btnStart).setVisibility(View.VISIBLE);
+                findViewById(R.id.btnStartHandlerCount).setVisibility(View.VISIBLE);
             }break;
         }
     }

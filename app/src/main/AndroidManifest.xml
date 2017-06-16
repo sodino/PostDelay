@@ -16,6 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+
+        <service android:name=".TestAlarmService"
+            android:exported="false">
+
+        </service>
+
+        <receiver android:name=".XmlAlarmReceiver">
+            <intent-filter>
+                <action android:name="action.test.XML" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".XmlAlarmRepeatingReceiver">
+            <intent-filter>
+                <action android:name="action.test.XML.repeating" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
