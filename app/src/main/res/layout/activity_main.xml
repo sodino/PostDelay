@@ -6,30 +6,49 @@
     android:layout_height="match_parent"
     tools:context="com.sodino.postdelay.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Count"
-        android:textAllCaps="false"
-        android:id="@+id/btnStartHandlerCount"></Button>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop Count"
-        android:visibility="invisible"
-        android:textAllCaps="false"
-        android:id="@+id/btnStopHandlerCount"></Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Count"
+            android:textAllCaps="false"
+            android:id="@+id/btnStartCount"></Button>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop Count"
+            android:visibility="invisible"
+            android:textAllCaps="false"
+            android:id="@+id/btnStopCount"></Button>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IgnorePower"
+            android:textAllCaps="false"
+            android:id="@+id/btnIgnorePower"
+            ></Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Launch Power Intent"
+            android:textAllCaps="false"
+            android:id="@+id/btnLaunchPower"
+            ></Button>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

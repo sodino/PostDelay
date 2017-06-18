@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.Date;
+import java.util.Timer;
 
 /**
  * Created by sodino on 2017/6/16.
@@ -27,6 +28,9 @@ public class TestAlarmService extends Service {
     private PendingIntent intentCode;
 
     private CodeAlarmReceiver codeReceiver;
+
+    private Timer timer;
+
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -42,6 +46,19 @@ public class TestAlarmService extends Service {
         registerXmlAlarmRepeating();
         registerXmlAlarm();
         registerCode();
+
+        scheduleTimer();
+    }
+
+    public void scheduleTimer() {
+        if (timer == null) {
+            timer = new Timer();
+        }
+
+        timer.schedule(new CountTask(), Constant.DURATION);
+        Log.d(getClass().getName(),
+                "schedule next CountTask at "
+                        + Constant.DF.format(new Date(System.currentTimeMillis() + Constant.DURATION)));
     }
 
     private void registerCode() {

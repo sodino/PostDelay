@@ -1,10 +1,12 @@
 package com.sodino.postdelay;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.os.Process;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,14 +29,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btnStartHandlerCount).setOnClickListener(this);
-        findViewById(R.id.btnStopHandlerCount).setOnClickListener(this);
+        findViewById(R.id.btnStartCount).setOnClickListener(this);
+        findViewById(R.id.btnStopCount).setOnClickListener(this);
+        findViewById(R.id.btnIgnorePower).setOnClickListener(this);
+        findViewById(R.id.btnLaunchPower).setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.btnStartHandlerCount:{
+            case R.id.btnStartCount:{
                 if (backHandler == null) {
                     bThread.start();
                     backHandler = new Handler(bThread.getLooper(), this);
@@ -42,14 +47,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 backHandler.sendEmptyMessageDelayed(DO_BG_TASK, DURATION);
                 uiHandler.sendEmptyMessageDelayed(DO_UI_TASK, DURATION);
                 v.setVisibility(View.GONE);
-                findViewById(R.id.btnStopHandlerCount).setVisibility(View.VISIBLE);
+                findViewById(R.id.btnStopCount).setVisibility(View.VISIBLE);
 
                 Intent intent = new Intent(this, TestAlarmService.class);
                 startService(intent);
             }break;
-            case R.id.btnStopHandlerCount: {
+            case R.id.btnStopCount: {
                 v.setVisibility(View.GONE);
-                findViewById(R.id.btnStartHandlerCount).setVisibility(View.VISIBLE);
+                findViewById(R.id.btnStartCount).setVisibility(View.VISIBLE);
+            }break;
+            case R.id.btnIgnorePower:{
+                Intent intent = new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivity(intent);
+            }break;
+            case R.id.btnLaunchPower:{
+                Intent intent = new Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS);
+                startActivity(intent);
             }break;
         }
     }
